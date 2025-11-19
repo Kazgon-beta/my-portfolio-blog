@@ -1,0 +1,111 @@
+@charset"UTF-8";
+
+/*共通部分*/
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+    font-family: "Hiragino kaku Gothic ProN","Hiragino Sans","BIz UDPGothic",sans-serif;
+    line-height:1.7;
+    background-color: antiquewhite;
+   
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width:100%;
+}
+
+/*ヘッダー*/
+.main-nav{
+    display:flex;
+    justify-content: left;
+    gap:2.5rem;
+    font-size: 1.5rem;
+    list-style:none;
+}
+
+.main-nav a{
+    color:#D9DAF9;
+}
+
+.main-nav a:hover{
+    color:#9699fa;
+}
+
+/*見出し*/
+.page-title{
+    font-size:2.5rem;
+    font-family: "Hiragino Sans";
+    color:#47433E;
+    text-align: center;
+    margin-top:3rem;
+    line-height: 1.4;
+}
+
+.purpose{
+    font-family:"Yu Mincho";
+    color:#47433E;
+    text-align: center;
+}
+
+hr{
+    align-items: center;
+    color: #D9DAF9;
+    width:25rem;
+    margin-top: 5rem;
+}
+
+/*最新記事*/
+
+.article-list{
+    font-family:"Hiragino Sans";
+    color:#47433E;
+    margin-top:3rem;
+    text-align: center;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.card{
+    display: grid;
+    gap:10px;
+    text-decoration: none;
+    padding:1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color:#333;
+    transition:0.2s;
+    background-color: #fff;
+    gap:10px;
+}
+
+.card:hover{
+    box-shadow: 02px 10px rgba(0,0,0,0.1);
+    transform:translate(-3px);
+}
+
+.card h3{
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card-img {
+    width: 100%;            
+    height: auto;           
+    border-radius: 6px;     
+    margin: 0.5rem 0;       
+    object-fit: cover;      
+}
