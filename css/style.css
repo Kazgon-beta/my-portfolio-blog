@@ -8,6 +8,18 @@
   font-style: normal;
 }
 
+.strong{
+    font-weight: bolder;
+    color:#ED9E34;
+}
+
+.strong2{
+    font-weight:bolder;
+    text-decoration: underline;
+    text-decoration-color: #ED9E34;
+
+}
+
 body{
     font-family: "Hiragino kaku Gothic ProN","Hiragino Sans","BIz UDPGothic",sans-serif;
     line-height:1.7;
@@ -169,4 +181,125 @@ hr{
     width:10rem;
     align-items: left;
 }
+
+/* ----記事ページデザイン -----*/
+
+.article-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 1rem;
+    align-items: center;
+}
+
+.article-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* アイキャッチ画像 */
+.article-eyecatch {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.article-figure{
+    width:100%;
+    height:auto;
+    border-radius: 6px;
+    margin: 1.5rem;
+    align-items: left;
+}
+
+/* リード文 */
+.article-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+}
+
+.tabele-of-contents{
+    margin-bottom:2rem;
+    border: 2px solid #D9DAF9;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+}
+
+.tabele-of-contents div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background-color: #dbf0ff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.tabele-of-contents ol{
+    list-style-type: decimal;
+    margin: 0;
+    overflow: hidden;
+}
+
+.tabele-of-contents > ol{
+    padding: 1em 1em 1em 3em;
+}
+
+.tabele-of-contents ol ol{
+    margin-top: 5px;
+    padding-left: 1.1em;
+}
+
+.tabele-of-contents li{
+    padding: 5px 0;
+    font-weight: 600;
+}
+
+.tabele-of-contents ol ol li{
+    font-weight: 500;
+    font-size: .9em;
+}
+
+.article-container h2 {
+    margin-top: 2rem;
+    border-left: 4px solid #D9DAF9;
+    padding-left: 0.5rem;
+}
+
+.article-container p {
+    line-height: 1.8;
+    margin: 1rem 0;
+}
+
+/* 戻るボタン */
+.back-btn-wrap {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: #D9DAF9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
 
