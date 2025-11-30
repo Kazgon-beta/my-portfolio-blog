@@ -1,4 +1,4 @@
-@charset"UTF-8";
+@charset "UTF-8";
 
 /*共通部分*/
 
@@ -24,7 +24,6 @@ body{
     font-family: "Hiragino kaku Gothic ProN","Hiragino Sans","BIz UDPGothic",sans-serif;
     line-height:1.7;
     background-color: antiquewhite;
-   
 }
 
 a{
@@ -229,6 +228,7 @@ hr{
     margin-bottom: 2rem;
 }
 
+/*目次*/
 .tabele-of-contents{
     margin-bottom:2rem;
     border: 2px solid #D9DAF9;
@@ -271,6 +271,8 @@ hr{
     font-size: .9em;
 }
 
+/*記事内容*/
+
 .article-container h2 {
     margin-top: 2rem;
     border-left: 4px solid #D9DAF9;
@@ -303,7 +305,7 @@ hr{
     transform: translateY(-3px);
 }
 
-/*記事一覧ページ*/
+/*---記事一覧ページ----*/
 .article-index{
     max-width: 1000px;
     margin: auto;
