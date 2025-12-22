@@ -317,3 +317,31 @@ hr{
     border-left: 4px solid #D9DAF9;
     padding-left: 0.5rem;
 }
+
+/*ロード画面*/
+#loading{
+    background-color:#eee;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+}
+
+#loading-screen{
+    background-color: var(--light-green);
+    position:fixed;
+    inset:0;
+    z-index: 9998;
+    translate: 0 100vh;
+}
+
+#loading p{
+    font-size: 2rem;
+}
+
+#container{
+    margin: 20px;
+    width: 400px;
+    height: 8px;
+}
