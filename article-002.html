@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+    <meta charset="UTF-8">
+    <title>GitHub初心者が「チーム開発」を意識して一人で練習した話。</title>
+    <meta name="description" content="未経験30代がエンジニア転職を目指して日々勉強した内容をまとめるブログ">
+    <!--ビューポート設定-->
+    <meta name ="viewport" content="width=device-width,initial-scale=1.0">
+    <!---リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css=1">
+    <!---googleフォント-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+ <body>
+    <header class="page-header bebas-neue-regular">
+        <a href="index.html"><img class="logo" src="images/logo.jpg" alt="記事１"></a>  
+        <nav>
+            <ul class="main-nav font-english">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+        </nav>    
+    </header>
+
+    <main class="article-container">
+        <!-- 記事タイトル -->
+    <h1 class="article-title">GitHub初心者が「チーム開発」を意識して一人で練習した話。</h1>
+
+    <!-- 投稿日 -->
+    <p class="article-date">2026-1-04</p>
+
+    <!-- アイキャッチ画像 -->
+    <img src="images/article-002.jpg" alt="記事のアイキャッチ画像" class="article-eyecatch">
+
+    <!-- リード文 -->
+    <div class="article-lead">
+       <p>「Git?GitHub?なんだそれ。プログラム書けるようになりたいんだったらコードだけ書いてりゃいいんじゃないの？」</p><br>
+       <p>私にもそう思っている時期がありました。しかし、試しに利用してみると、<strong>必須レベルで重要な知識、スキル</strong>だということが理解できました。</p><br>
+       <p>ここでは、Git/GitHub初心者、web開発初心者の私が行ったことを追体験できるように記事にまとめてみました。</p><br>
+       <p>「GitHubちょっとやってみようかな。」と思っている初心者の方の手助けになれば幸いです。</p>
+       
+
+    </div>
+    <div class="tabele-of-contents">
+       <div>目次</div>
+       <ol>
+         <li><a href="#1">Git/GitHubとは？</a></li>
+         <li><a href="#2">大まかな流れ</a></li>
+            <ol>
+                <li><a href="#2-1">ローカル作業</a></li>
+                <li><a href="#2-2">ステージング</a></li>
+                <li><a href="#2-3">コミット</a></li>
+                <li><a href="#2-4">プッシュ</a></li>
+                <li><a href="#2-5">プルリクエスト</a></li>
+                <li><a href="#2-6">マージ</a></li>
+                <li><a href="#2-7">プル</a></li>
+            </ol>
+         <li><a href="#3">Git/GitHubのダウンロード</a></li>
+            <ol>
+                <li><a href="#3-1">Gitをインストールする</li>
+                <li><a href="#3-2">GitHubにユーザー登録</li>
+                <li><a href="#3-3">リモートリポジトリの作成</li>
+                <li><a href="#3-4">ローカルリポジトリの作成</li>
+            </ol>
+         <li><a href="#4">Git/GitHubの使い方</a></li>
+            <ol>
+                <li><a href="#4-1">ブランチ</li>
+                <li><a href="#4-2">ローカル作業</li>
+                <li><a href="#4-3">ステージング</li>
+                <li><a href="#4-4">コミット</li>
+                <li><a href="#4-5">プッシュ</li>
+                <li><a href="#4-6">プルリクエスト</li>  
+                <li><a href="#4-7">レビューが返ってきたら修正をする。</li> 
+                <li><a href="#4-8">マージ</a></li>
+                <li><a href="#4-9">プル</a></li>
+            </ol>
+         <li><a href="#5">おわりに</a></li>
+       </ol>
+    </div>
+
+    <!-- 本文セクション -->
+    <h2 id="1">1.Git/GitHubとは</h2>
+    <p>
+        Gitとは、ソースコードやファイルの変更管理をするためのツールです。<br>
+        いつ、誰が、どのファイルをどのように変更したのかを記録できます。<br>
+
+        一方GitHubとは、Gitで管理しているデータをインターネットで共有できるサービスです。<br>
+        まとめると、
+        <ul>
+            <li>Gitは、「履歴管理を行うツール」</li>
+            <li>GitHubは「Gitの履歴を共有し、チームで開発するためのサービス」</li>        
+        </ul>
+        と言うことです。<br><br>
+
+        「一人で開発するなら、”GitHub”は必要ないのでは？」と思いますよね。<br><br>
+
+        確かに、単純にプログラミング言語を学びたいと思うだけなら、そこまでやる必要はないかもしれません。
+        しかし、
+        <ul>
+            <li>web系の会社であれば就職後はGitHubを利用したチーム開発が前提であることが多い。</li>
+            <li>GitHubに記録を残すことで、就活中のポートフォリオになる。</li>
+        </ul>
+        といったことから、一人で開発する時でもGitHubを利用することは十分に価値があると考えました。<br>
+        (さらに言うと、私はポートフォリオを掲載するようなオリジナルサイトを制作することが良いと考えますが、
+        それは別の記事にしておりますので、気になる方はそちらをご覧ください。→
+        <a href="article-001.html">HTML/CSSでシンプルブログを作る)</a>
+    </p>
+
+    <h2 id="2">2.大まかな流れ</h2>
+    <p>
+        初めに、Git/GitHubではどのようなことが行われているのかをざっくり説明します。以下のような流れです。
+        <div class="box">
+             <ol>
+                <li>ローカル作業（ローカルリポジトリ）</li>
+                <li>ステージング</li>
+                <li>コミット</li>
+                <li>プッシュ</li>
+                <li>プルリクエスト</li>
+                <li>マージ</li>
+                <li>プル</li>
+             </ol>   
+        </div>
+        <hr>
+    </p>
+     <h3 id="2-1">2-1.ローカル作業</h3>
+     <p>
+        まずは、自分のパソコン上でコードを書いたり、ファイルを編集したりします。
+        この時点ではまだ、GitやGitHubによる管理は行われていません。
+        html,css,JavaScriptなどのファイルを作ったり、READMEなどを書いたりします。
+     </p>
+     <hr>
+     <h3 id="2-2">2-2.ステージング</h3>
+        <p>
+        「2-1.ローカル作業」で変更した内容のうち、<div class="strong">今回の変更として記録したいものを選ぶ作業</div>のことを<strong>ステージング</strong>と言います。
+        少し分かりにくいのですよね。そこで、次の例を読んでイメージをつかんでみて下さい。<br><br>
+     
+        あなたは自分で作ったハンドメイドの商品を倉庫に郵送します。今回は靴下や、Tシャツ、上着を作っていますが、今回はTシャツだけ送りたい、靴下や上着は次回にすることにしました。
+        その際、間違って靴下や上着を送らないようにTシャツだけを玄関に置いておきました。<br>
+
+        この例で言うと、「靴下」が記録したいデータ、靴下を玄関へ持っていくことを「ステージング」と言います。<br><br>
+        
+        ステージングを行うことで以下のメリットがあります。
+        <ul>
+            <li>途中の不要な変更を含めずに済む。</li>
+            <li>意図した単位で履歴を残せる。</li>
+        </ul>
+     </p>
+     <hr>
+     <h3 id="2-3">2-3.コミット</h3>
+     <p>コミットとは、ステージングした変更を<div class="strong">履歴として確定させる操作のこと</div>を言います。<br><br>
+        
+        先ほどの郵送の例で例えるなら、<strong>「箱を閉じて、封をして、内容を書いた伝票を張る」</strong>という作業のようなものです。<br>
+        中身は確定し、「何を送ったのか」分かる状態になります。さらに言うとこの箱は"改変不可"の状態になります。<br><br>
+
+        ここまではまだ自分のパソコンに記録されるだけで、他の人からは見えません。<br>
+        このように、GitHubで共有するためのファイルを保存している場所を<div class="strong2">「ローカルリポジトリ」</div>と言います。
+    </p>
+    <hr>
+    <h3 id="2-4">2-4.プッシュ</h3>
+    <p>プッシュとは、ローカルリポジトリにあるコミットを<div class="strong">GitHubに送信する</div>ことです。<br>
+        
+        先ほどの例で言うと、郵送し、倉庫へ搬入されるといったイメージです。<br><br>
+
+        ここで、ようやく「他の人から見られる」状態になり、他の人もその変更を取得できる状態になります。<br>
+        また、GitHubにあるファイルの保存場所のことを<div class="strong2">「リモートリポジトリ」</div>と言います。
+    </p>
+    <hr>
+    <h3 id="2-5">2-5.プルリクエスト</h3>
+    <p>プルリクエストとは、<div class="strong">「開発した変更要素を取り込んでください。」と依頼するための仕組み</div>です。<br>
+        開発者がそれぞれローカルで作成したものを、誰も確認することなくどんどん共同で作っている制作物につけ足していったら、よくわからないものが出来上がりそうです。<br>
+        そこで大切なのがプルリクエストです。変更した内容を説明し、問題が無いか確認してもらうために必要な仕組みです。<br><br>
+
+        先ほどの例で言うと、倉庫を管理している人全員に荷物の内容を書いた手紙を送り、荷物を受け取ってもらえるようにお願いをするといった感じです。<br>
+        つまりこの段階では、倉庫に荷物は入っていないのです。<br>
+    </p>
+    <hr>
+    <h3 id="2-6">2-6.マージ</h3>
+    <p>マージとはプルリクエストを承認し、<div class="strong">変更を共同で開発している制作物に取り込む</div>ことを言います。<br>
+        また、"共同で開発している制作物"のことを<div class="strong2">「masterブランチ」</div>や<div class="strong2">「mainブランチ」</div>と言います。
+        ブランチについてはもう少し後で説明します。<br><br>
+
+        この記事を読んでいる方は基本的に一人で開発を行う人が多いと思うので注意が必要なのですが、
+        チーム開発において「マージ」は基本的には自分では行わないということは頭に入れておいてほしいと思います。<br><br>
+
+        このマージという作業は本流に変更を決定させる非常に重要な役割を担っています。なので、基本的にはレビュー担当者やリーダーがマージを行うことが多いです。<br>
+        一人開発では自分でマージしますが、「本来はレビュー後にマージされるもの」という意識を持っておいてください。<br>
+    </p>
+    <hr>
+    <h3 id="2-7">2-7.プル</h3>
+    <p>
+        プルは、<div class="strong">リモートリポジトリの最新状態をローカルに反映する</div>操作です。<br>
+        開発現場では、<br>
+        <ul>
+            <li>他人がマージした内容を取り込む。</li>
+            <li>作業前に必ず最新状態にする。</li>
+        </ul>
+        と言った場面で頻繁に使います。
+    </p>
+    <hr>
+    <P>
+        上記のような流れでGit/GitHubは制作物を管理してくれます。繰り返しになりますが少し整理すると、<br>
+        <ul>
+            <li> ローカル作業～コミットまでは、<div class="strong2">自分のPC内でのこと＝Gitを利用している。（オフライン）</div></li>
+            <li>プッシュ、プルリクエスト、プルは<div class="strong2">GitHubを利用している。（オンライン）</div></li>
+        </ul>
+        このあたりを覚えておくとすっきり理解できるのではないかと思います。
+    </P>
+    <hr>
+    <h2 id="3">3.Git/GitHubのダウンロード</h2>
+    <p>
+        上記の文章を読んで、大まかに理解できた方はすぐにでも使いたいでしょう。
+        ここからは具体的にGit/GitHubを利用できるように画像付きでダウンロード方法を紹介します。
+            <div class="box">
+                <ol>
+                    <li>Gitをインストールする。</li>
+                    <li>GitHubにユーザー登録</li>
+                    <li>リモートリポジトリの作成</li>
+                    <li>ローカルリポジトリの作成</li>
+                </ol>
+            </div>
+    </p>
+    <hr>
+    <h3 id="3-1">3-1.Gitをインストールする。</h3>
+    <p>
+        GitHubを利用するには、まずGitをダウンロードする必要があります。<br>
+        私のパソコンがWindowsなので今回はWindowsの場合のみ説明します。<br>
+        <div class = "description">
+            <ol>
+                <li><a href="https://gitforwindows.org/">git公式サイトへ行く。</a></li>
+                    <p>
+                        <img src="images/HowToDownloadGit1.png">
+                        ダウンロードは<a href="https://gitforwindows.org/">Git公式サイト</a>から可能です。赤枠で囲った「Download」をクリックして、インストーラーを自身のPCに保存します。
+                    </p>
+                <li>インストーラーを起動する。</li>
+                    <p>ダウンロードされた.exeファイルをダブルクリックして起動します。「このアプリがデバイスに変更を加えることを許可しますか？」と表示された場合は「はい」を選択してください。</p>
+                    <img src="images/HowToDownloadGit2 .png">
+                <li>インストール先の指定</li>
+                    <p>最初にGitをインストールする場所を聞かれます。保存したい場所がある場合はそのフォルダを指定し、特にこだわりが無ければそのまま「Next」を押してください。</p>
+                <li>インストールするコンポーネントの選択</li>
+                    <img src="images/HowToDownloadGit.png">
+                    <p>次にインストールするコンポーネントの選択画面が表示されます。おびただしい数のチェックボックスが表示されますが、特に変更等を必要としませんので、「Next」をクリックしてください。</p>
+                <li>スタートメニューの設定</li>
+                    <p>これも特に変更する必要ありません。Windowsのメニューの項目にGitの項目を追加するだけです。「Next」を押してください。</p>
+                <li>デフォルトで使うエディタの選択</li>
+                    <img src="images/HowToDownloadGit4.png">
+                    <p>コミットで使用するエディタ設定を聞いてますが、特にこだわりがないなら初期設定でも大丈夫です。
+                        しかし、私の場合はWindoesVisualStudioCodeを利用していたので、「Use Visual Studio Code as Git's default editor」を選択しました。</p>
+                <li>初期ブランチ名の決定</li>
+                        <img src="images/HowToDownloadGit5.png">
+                    <p>
+                        次に最初に作成されるブランチ名を選択します。「Override the default branch name for new repositories」でブランチ名は「main」でOKです。
+                        ブランチについては、「4.Git/GitHubの使い方」で説明します。
+                    </p> 
+                <li>PATH環境の設定</li>
+                        <p>次にGitをどこから使えるようにするかを選択します。「Git from the command line and also from 3rd-party software」がおすすめです。<br>
+                            これを選ぶと、VSコードのターミナルなどからもGitコマンドが使えるようになります。</p>
+                <li>HTTPS 通信の設定</li>
+                        <p>次に、HTTPS 通信で使用するライブラリを選択します。「Use the OpenSSL library」のままで問題ありません。</p>
+                <li>改行コードの設定</li>
+                        <img src="images/HowToDownloadGit7.png">
+                        <p>次に改行コードの扱いについて選択します。おすすめは、「Checkout Windows-style, commit Unix-style line endings」です。これはMac,Windows,Linuxが混在するチーム開発でもトラブルが起きにくくなります。</p>
+                <li>ターミナルエミュレーターの設定</li>
+                        <img src="images/HowToDownloadGit8.png">
+                        <p>「Use MinTTY（the default terminal of MSYS2）」を選択して次に進みましょう。</p>
+                <li>その他の設定</li>
+                        <p>その他、ファイルのキャッシュや認証関連のことを聞かれますが、全てデフォルトでかまいません。完了したら最後に「install」ボタンを押しましょう。完了したら下のような画面が出てくるはずです。</p>
+                        <img src="images/HowToDownloadGit9.png">
+                        <p>完了後、スタートメニューにGit Bash,Git GUIがスタートメニューに追加されているはずです。</p>
+                        <img src="images/HowToDownloadGit10.png">
+                <li>確認方法</li>
+                        <p>念のため、Git が正しくインストールされたか確認します。</p>
+                        <p>「GitBush」を起動して、「git --version」と入力してみましょう。以下のような画面になれば成功です。</p>
+                        <img src="images/HowToDownloadGit11.png">
+            </ol>
+        </div>
+    <hr>
+    </p>
+    <h3 id="3-2">3-2.GitHubにアカウント登録をする。</h3>
+        <p>続いて、<a href="https://github.com">ギットハブの公式ページ</a>に行って、アカウント登録をしましょう。<br>
+            画面右上「sign up」もしくは、緑色のボタン「sign up for Github」をクリックします。<br>
+            <img src="images/HowToSignUpGitHub1.png">
+            次に、Eメールやパスワード、ユーザーネーム、国籍など設定します。<br>
+            <img src="images/HowToSignUpGitHub2.png">
+            特に、ユーザーネームはGitHub上で公開される名前です。<div class="strong">本名そのままは避け、就職活動中に見られても問題のない名前にしておくのがベストです。</div><br>
+            また、<div class="strong2">グーグルアカウントやアップルアカウントを利用して簡単に登録することも可能です。</div><br>
+            その後、本人確認、メールアドレスの認証、プランの選択など聞かれます。<br>
+            登録方法によって少しだけ進み方に違いがあるようなので詳細は省きますが、基本的には指示通り記入していけばログインまで完了できます。<br>
+        </p>
+    <hr>
+    <h3 id="3-3">3-3.リモートリポジトリの作成</h3>
+        <p>
+            GitHubのアカウントを作成したら、次はいよいよリモートリポジトリをつくってみましょう！
+            リモートリポジトリは、
+            <ul>
+                <li>ソースコードを保管する場所</li>
+                <li>チーム開発で共有する場所</li>
+                <li>ポートフォリオとして他人に見せる場所</li>
+            </ul>
+            という役割をもっています。
+        </p>
+        <p>
+            まずは、GitHubログイン後の画面を見てみましょう。左上の「new」ボタンをクリックします。もしくは右上の＋ボタンをクリックし、その後、「New repository」 を選択します。
+            <img src="images/MakeNewRepository1.png">
+            すると、以下のような画面になりますので、<strong>「リポジトリ名」</strong>を入力しましょう。<br>
+            リポジトリ名を入力するには、以下のことに気を付けましょう。
+            <ul>
+                <li>半角英数字とハイフン（-）で記入する。</li>
+                <li>何を作っているのか分かる名前にする。</li>
+                <li>日本語は使わない。</li>
+            </ul>
+            今回は練習用なので、「sample-repository」という名前にしました。
+        </p>
+        <p>
+            次は、<strong>リポジトリの説明（Description）</strong>を書きましょう。
+            <img src="images/MakeNewRepository2.png">
+            これは、空欄でも問題ないのですが、簡単な一文を書いておくと親切かと思います。
+        </p>
+        <p>
+            次に、<strong>リポジトリの公開範囲の選択</strong>を行います。
+            <ul>
+                <li>public・・・誰でも閲覧可能</li>
+                <li>private・・・自分（または許可をした人）が閲覧可能</li>
+            </ul>
+            publicにすると、URLを共有して他の人にも見せやすいです。就職活動などに使う場合はpublicにするのが良いかと思います。
+            <img src="images/MakeNewRepository3.png">
+        </p>
+        <p>
+            次に、<strong>READMEファイルを作成するか</strong>ですが、基本的にチェックを入れることをお勧めします。<br>
+            ここにチェックを入れておくと、READMEファイルが自動的に作成されます。READMEは<br>
+            <ul>
+                <li>このリポジトリが何のためのものか</li>
+                <li>どんな内容が入っているか</li>
+            </ul>
+            を説明する最初に読まれるファイルです。自分がせっかく時間をかけて作った物をきちんと説明できるものですから、作らないのは損です。
+            とは言え、後から自分で作りプッシュすることも可能です。ここで作っておくと少し楽できると考えておきましょう。
+        </p>
+        <p>
+            最後に<strong>.gitignore と License の選択</strong>ですが、これは両方ともチェックしなくても良いです。
+            少し調べましたが、<br>
+            <ul>
+                <li>.gitignore・・・特定のファイルをGitから除外する設定</li>
+                <li>License・・・ソースコードの利用条件を決めるもの（ライセンス）</li>
+            </ul>
+            なので、単純に学習が目的であれば、特にチェックは必要ないかと思います。<br><br>
+
+            ここまで出来たら一番下の<strong>「Create repository」</strong>をクリックして、リモートリポジトリが完成します。
+        </p>
+        <hr>
+    <h3 id="3-4">3-4.ローカルリポジトリを作成する。</h3>
+        <p>
+            次に、ローカルリポジトリの作成に入ります。先ほどダウンロードした「GitBush」を使いコマンド操作を行います。
+            <img src="images/MakeLocalRepository1.png">
+        </p>
+        <p>
+            まずはローカルリポジトリを置きたいフォルダへ移動します。例えば、Documentsフォルダに作成したい場合は<br>
+            <div class="strong2">cd ~/Documents</div><br>
+            と入力します。cdの後に、移動したいフォルダ名を書いてください。<br>
+            <img src="images/MakeLocalRepository2.png"><br>
+
+            「Documents」の部分は任意のフォルダ名にしてください。どんなフォルダがあるか分からない場合は<br>
+            <div class="strong2">ls</div><br>
+            <img src="images/MakeLocalRepository3.png"><br>
+            と打つと一覧で出てきます。これらはGitコマンドと言って、Linuxのような感覚でコマンド操作を行うことができます。
+            そもそも、Linuxの開発者とGitの開発者は同じ方だそうで、そういったところも面白いですね。気になる方はぜひ調べてみて下さい。<br>
+
+            話が逸れましたが、続きを説明していきます。<br>
+            続いて、GitHubへアクセスし、先ほど新しく作成したリポジトリのページへ行きます。緑色の「Code」ボタンをクリックし、URLの横の四角をクリックします。<br>
+            するとURLがコピーされます。
+            <img src="images/MakeLocalRepository4.png"><br>
+
+            そしてまたGitBushに戻ります。次は、<br>
+
+            <div class="strong2">git clone https://github.com/ユーザー名/リポジトリ名.git</div><br>
+
+            を実行しましょう。「https://～・・・」の部分は先ほどコピーしたURLを貼り付けるとできます。<br>
+            <ul>
+                <li class="strong2">貼り付け方は<strong>マウスホイールがある方はそれをクリック</strong>してください。</li>
+                <li class="strong2">ない方は、<strong>Shift+Ins</strong>で貼り付けましょう。</li>
+            </ul>
+            正しく実行されると、以下のような画面になります。
+            <img src="images/MakeLocalRepository5.png"><br>
+            ここまでできれば、以下のような状態だと言えます。<br>
+            <ul>
+                <li>リポジトリ名のフォルダが作成される。</li>
+                <li>中にREADMEが入っている。</li>
+                <li>すでにGitに管理されている。</li>
+            </ul>
+            念の為、きちんと紐づいているか確認してみましょう。GitBushで<br>
+            <div class="strong2">cd リポジトリ名</div>
+            を実行して、作成したフォルダへ移動しましょう。次に、<br>
+            <div class="strong2">git remote -v</div>
+            を実行します。以下の画像のように表示されたら成功です。
+            <img src="images/MakeLocalRepository6.png">
+        </p>
+
+    <h2 id="4">4.Git/GitHubの使い方</h2>
+    <h3 id="4-1">ブランチ</h3>
+    <p>
+        ここまで来たら、いよいよGit/GitHubを利用した開発を体験してみましょう。
+        まずは、<div class="strong2">「ブランチ」</div>を作ります。<br>
+        ブランチとは、<br>
+        <div class="strong">1つのプロジェクトを分岐させることです。</div><br>
+        これにより、機能追加やバグ修正、ファイルやディレクトリの変更など、<strong>様々な作業が同時進行</strong>できるのです。
+        ブランチは色々と別れていきますが、ブランチで施した変更を最終的に1つのブランチにまとめて完成させます。
+        この最後にまとめるブランチのことを<div class="strong2">「mainブランチ」もしくは、「masterブランチ」</div>と言います。<br>
+        少し前のGitBushを利用した時の画像を見てみましょう。コマンドを記入した欄の上に（main）と書かれています。<br>
+        これは現在「mainブランチ」で作業しているということを示しています。<br>
+        <img src="images/HowToUseGitGitHub1.png"><br>
+        これでは、ローカルでひたすら作業しているのと大きく変わらないので、ブランチを作り変更の記録が残るようにします。
+        開発環境では、<br>
+        <strong>mainは触らない。作業はブランチで行う。</strong><br>
+        がルールです。
+    </p>
+    <p>
+        ブランチは、<br>
+        <div class="strong2">git switch -c ブランチ名</div>
+        のようにBushに入力し、実行します。
+        ブランチ名は<br>
+        <ul>
+            <li>feature/○○○:新機能を実装</li>
+            <li>fix/○○○:バグを修正</li>
+            <li>docs/：ドキュメント（READMEなど）</li>
+            <li>refactor/：動きは変えず内部整理</li>
+        </ul>
+        など、作業する内容によって変更するのが一般的です。<br>
+        <img src="images/HowToUseGitGitHub2.png"><br>
+        （もちろん、somethingなんて名前はやめた方がいいですが、今回は試しなので・・・）
+    </p>
+    <h3 id="4-2">ローカル作業</h3>
+    <p>
+        ブランチができたので、実際にローカルリポジトリに変更を加えてみましょう。<br>
+        このあたりは私と同じようにしなくても大丈夫ですが、せっかくBushをダウンロードしたのでコマンドを使ってhtmlファイルを作成してみましょう。
+        <div class="strong2">pwd</div><br>
+        と入力して実行すると、今いる場所が表示されます。<br>
+        <img src="images/HowToUseGitGitHub3.png"><br>
+        リモートと紐づけされたローカルリポジトリにいることを確認できたら、<br>
+        <div class="strong2">nano index.html</div><br>
+        と入力してみましょう。すると、真っ黒の画面が立ち上がります。これは、Bushに標準搭載されているnanoというアプリケーションが立ち上がっている状態です。
+        <img src="images/HowToUseGitGitHub4.png"><br>
+        ここに適当にhtmlを打ち込んでみます。良ければコピペして使ってください。
+        <img src="images/HowToUseGitGitHub5.png"><br>
+        <div class="box">
+           <pre><code>
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="ja"&gt;
+            &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;title&gt;サンプル&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+            &lt;h1&gt;Hello World&lt;/h1&gt;
+            &lt;p&gt;ただいまGit/GitHubを練習中。&lt;/p&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+            </code></pre>
+        </div>
+        書けたら、<div class="strong2">Ctrl+Oの後、Enterで保存。Ctrl+xで閉じましょう。</div><br>
+        
+        一応、きちんとデータがあるか確認します。lsと打てば一覧が出るのでした。
+        <img src="images/HowToUseGitGitHub6.png">
+        さらに、書いたものが動くかどうか確かめておきましょう。Bushに<br>
+        <div class="strong2">start ファイル名</div><br>
+        を入力すると、既定のブラウザでhtmlファイルが読み込まれます。<br>
+        <img src="images/HowToUseGitGitHub7.png"><br>
+        きちんと動いていることが確認できました。<br>
+        <img src="images/HowToUseGitGitHub8.png">
+        次は「ステージング」をしていきます。<br>
+    </p>
+    <h3 id="4-3">ステージング</h3>
+    <p>
+        まず、変更状況を見るところから始めましょう。<br>
+        Bushで<div class="strong2">git status</div>と入力し、実行しましょう。
+        変更がある箇所が赤く表示されています。
+        <img src="images/HowToUseGitGitHub9.png"><br>
+        全てステージングするなら、<br>
+        <div class="strong2">git add .</div><br>
+        特定のファイルだけステージングするなら、
+        <div class="strong2">git add ファイル名</div><br>
+        今回はgit add index.html として、先ほど作ったhtmlファイルをステージングします。
+        <img src="images/HowToUseGitGitHub10.png"><br>
+        注意（Warning）が出ていますが、今回は無視して構いません。<br>
+        今、玄関にindex.htmlを置いたようなイメージを持ってもらうと良いかと思います。
+    </p>
+    <h3 id="4-4">コミット</h3>
+    <p>
+        次は、ステージングした変更を確定するために「コミット」しましょう。<br>
+        Bushに以下のようなコマンドを打ち込みましょう。<br>
+
+        <div class="strong">git commit -m "ここにメッセージを打ち込む。"</div><br>
+
+        ""の中はコメントです。第三者が見ても分かるように何をしたのかを書きます。
+        <img src="images/HowToUseGitGitHub11.png">
+    </p>
+    <h3 id="4-5">プッシュ</h3>
+    <p>
+        次はローカルにあるコミットをGitHubに送ります。Bushで以下のように打ちましょう。<br>
+        <div class="strong2">git push -u origin リポジトリ名</div><br>
+        <img src="images/HowToUseGitGitHub12.png">
+        少し長いですがこれは最初だけで、
+        次回から、同じリポジトリ内での変更は<div class="strong2">git push</div>とするだけでGitHubに送られます。
+    </p>
+    <h3 id="4-6">プルリクエスト</h3>
+    <p>
+        GitHubのリポジトリへ行くと、<strong>「Compare & pull request」</strong>のボタンが表示されています。そこからプルリクエストを作成します。
+        <img src="images/HowToUseGitGitHub13.png"><br>
+        プルリクエストでは以下のようなことを書くのが良いのではないかと思われます。<br>
+        <ul>
+            <li>概要：何をしたのか。</li>
+            <li>目的：なぜ必要なのか。</li>
+            <li>確認方法：どう動作確認をしたか。</li>
+        </ul>
+        しかしこれは会社によって方針が違うようですので、あくまで目安と思ってもらえればと思います。<br>
+        <img src="images/HowToUseGitGitHub14.png"><br>
+        書けたら、画面下「Create pull request」をクリックしましょう。
+    </p>
+    <h3 id="4-7">レビューが返ってきたら修正をする。</h3>
+    <p>
+        チーム開発ではPRを出すとレビューが返ってきます。<br>
+        その時は内容を確認し、<br>
+        <ol>
+            <li>ローカルで修正する</li>
+            <li>git add ファイル名</li>
+            <li>git commit -m "コメント"</li>
+            <li>git push</li>
+        </ol>
+        の流れで修正しましょう。すると、同じPRに自動で追記されます。
+    </p>
+
+    <h3 id="4-8">マージ</h3>
+    <p>
+        一人開発では自分でマージをしますが、チーム開発では基本的にレビュー担当者やリーダーがマージをします。<br>
+        やり方はGitHubに表示されている<strong>「Marge pull request」→「Confirm merge」</strong>を押しましょう。
+        <img src="images/HowToUseGitGitHub15.png">
+        <img src="images/HowToUseGitGitHub16.png">
+        もう必要なければ今作業していたブランチも消します。「Delete branch」を押しましょう。
+        <img src="images/HowToUseGitGitHub17.png">
+    </p>
+    <h3 id="4-9">プル</h3>
+    <p>
+        マージされたら、自分のローカルmainを最新の状態にしましょう。まず、ブランチをmainに切り替えます。Bushで、
+        <div class="strong2">git switch main</div>
+        と打ちます。<br>
+        <img src="images/HowToUseGitGitHub18.png"><br>
+        これでmainブランチに戻ってきました。<br>
+        今の状態で、<div class="strong2">nano index.html</div>をしたらどうなるでしょうか。<br><br>
+
+
+        先ほどまで作業していたのは別のブランチでのことです。なので、<div class="strong2">index.htmlを開いても何も書かれていないはずです。</div><br>
+        <img src="images/HowToUseGitGitHub19.png"><br>
+        しかし、リモートのmainブランチには、先ほどの作業の記録がマージされているはずです。そこで、今度はリモートのmainブランチから記録をプルしてみましょう。<br>
+        Bushのコマンドは<br>
+      
+        <div class="strong2">git pull</div><br>
+
+        です。<br>
+        <img src="images/HowToUseGitGitHub20.png"><br>
+        正常にプルできているのか、確認してみましょう。再び、<div class="strong2">nano index.html</div>をしてみましょう。<br>
+        <img src="images/HowToUseGitGitHub21.png"><br>
+        先ほど書いたhtmlコードがきちんと記録されています。<br>
+
+        <div class="strong">これが、作業の初めにプルをする大切さです。</div>
+        例えば、初めにプルをせずにブランチを作り、作業をしていたとします。しかし、自分が作業をしている箇所はすでに他の人が作業し終わっているところだったとします。
+        チーム開発では同じファイルの同じ部分を複数人が変更すると<div class="strong2">コンフリクト(競合)</div>が起こります。        
+        そうならないためにも、毎回mainブランチをプルしてから作業をすることや、プルリクエストやレビューと言ったコミュニケーションを大切にすることがいかに重要か分かります。
+    </p>
+    <h2 id="5">おわりに</h2>
+    <p>
+        実際に手を動かさないと分からないことも多く、概念も難しかったですが、なぜGit/GitHubが開発の現場で支持されているのか理由がわかったように思います。
+        一人開発では正直寂しさもありますが、
+        <ul>
+            <li>ブランチ運用</li>
+            <li>プルリクエスト</li>
+            <li>レビューを意識したコード</li>
+        </ul>
+        など、今後の学びになることも多くありました。<br>
+        これからGit/GitHubを利用したいという方の参考になれば幸いです。
+    </p>
+
+
+    <!-- 戻るボタン -->
+    <div class="back-btn-wrap">
+        <a href="articles.html" class="back-btn">← 記事一覧に戻る</a>
+    </div>
+
+    </main>
+    
+    <footer>
+        <p>@ 2025 Kazgon.Log</p>
+    </footer>
+
+
+ </body>
+
+</html>    
