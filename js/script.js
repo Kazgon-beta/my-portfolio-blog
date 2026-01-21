@@ -50,5 +50,52 @@ window.addEventListener('load', () => {
   );
 });
 
+document.addEventListener('DOMContentLoaded', ()=>{
+  //１）要素を取得
+  const menuToggle =document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  const menuClose = document.querySelector('.menu-close');
+
+  //どれか無いと動かせないのでガード（AIさんさすがです。）
+  if(!menuToggle||!nav||!menuClose)return;
+
+  //2)開く・閉じる関数
+  function openMenu(){
+    nav.classList.add('is-open');
+    menuToggle.setAttribute('aria-expanded','true');
+
+    //開いている間は三本線を隠して誤タップを防ぐ
+    menuToggle.classList.add('is-hidden');
+  }
+
+  function closeMenu(){
+    nav.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded','false');
+
+    menuToggle.classList.remove('is-hidden')
+  }
+
+  //3)クリックイベント
+  menuToggle.addEventListener('click',() => {
+    //すでに開いていたら閉じる、とじていたら開く
+    const isOpen = nav.classList.contains('is-open');
+    if(isOpen)closeMenu();
+    else openMenu();
+  });
+
+  menuClose.addEventListener('click',closeMenu);
+
+  //4)メニュー内のリンクを押したら閉じる
+  nav.addEventListener('click',(e) =>{
+    const clickedLink = e.target.closest('a');
+    if(clickedLink)closeMenu();
+  });
+
+  //5)Escキーで閉じる
+  document.addEventListener('keydown',(e)=>{
+    if(e.key === 'Escape')closeMenu();
+  });
+});
+
 
 

@@ -13,20 +13,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 
  <body>
-    <header class="page-header bebas-neue-regular">
-        <a href="index.html"><img class="logo" src="images/logo.jpg" alt="記事１"></a>  
-        <nav>
-            <ul class="main-nav font-english">
+     <a href="index.html"><img class="logo" src="images/logo.jpg" alt="ブログホーム"></a>
+     <header class="page-header bebas-neue-regular">
+       
+        <!--スマホ用のハンバーガーボタン-->
+        <button class="menu-toggle"
+                aria-controls="site-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く">
+         <!---3本線（CSSで見た目を作る）-->
+         <span class="bar" aria-hidden="true"></span>
+         <span class="bar" aria-hidden="true"></span> 
+         <span class="bar" aria-hidden="true"></span>     
+        </button>  
+        <nav id="site-menu" class="main-nav font-english" aria-label="メインメニュー">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles.html">Articles</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
             </ul>
+            <button class="menu-close" type="button" aria-label="メニューを閉じる">
+                X
+            </button>
         </nav>    
-    </header>
-
+     </header>
     <main class="article-container">
         <!-- 記事タイトル -->
     <h1 class="article-title">IT知識0から基本情報技術者試験に合格した、「ハードル下げまくり勉強法」</h1>

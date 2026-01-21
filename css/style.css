@@ -2,6 +2,12 @@
 
 /*共通部分*/
 
+.logo{
+    display: block;
+    width: 100%;
+    height:auto;
+}
+
 .bebas-neue-regular {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -44,7 +50,7 @@ img{
 }
 
 /*ヘッダー*/
-.main-nav{
+.main-nav ul{
     display:flex;
     justify-content: left;
     gap:2.5rem;
@@ -358,4 +364,106 @@ hr{
     font-size: 1rem;
     margin-top: 1.5rem;
     text-decoration: underline;
+}
+
+/*ハンバーガーボタン追加に伴う変更*/
+.page-header{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  position: relative;
+  z-index: 1000; /* メニューが他要素の裏に回らないように */
+}
+
+.menu-close{
+  display: none;
+}
+
+.menu-toggle{
+  display: none; /* PCでは隠す（スマホで表示） */
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background:transparent;
+  cursor: pointer;
+
+  /* 3本線を中央に並べる */
+  padding: 10px;
+  gap: 6px;
+  place-content: center;
+}
+
+.menu-toggle .bar{
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 9999px;
+}
+.menu-toggle.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*モバイル版*/
+@media (max-width: 768px){
+
+  /* ハンバーガーを表示 */
+  .menu-toggle{
+    display: grid;
+  }
+
+  /* PC用の横並び状態をスマホ用パネルに変形 */
+  .main-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    /* “上から降りてくる”感じ */
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+
+    background: rgba(250, 235, 215, 0.932);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+
+    padding: 16px;
+    z-index: 2000;
+  }
+
+  /* メニューが開いている状態（JSで .is-open を付ける想定） */
+  .main-nav.is-open{
+    transform: translateY(0);
+  }
+
+  /* スマホでは縦並びに */
+  .main-nav ul{
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .main-nav a{
+    display: block;
+    padding: 10px 8px;
+  }
+
+  /* 閉じるボタン（右上に×） */
+  .menu-close{
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+  }
 }
