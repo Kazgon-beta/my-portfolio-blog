@@ -1,5 +1,5 @@
 const loadingAreaGrey = document.querySelector('#loading');
-const loadingAreaGreen = document.querySelector('#loading-screen');
+const loadingAreaWhite = document.querySelector('#loading-screen');
 const loadingText = document.querySelector('#loading p');
 
 window.addEventListener('load', () => {
@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
   );
 
   // ローディング中（薄緑スクリーン）
-  loadingAreaGreen.animate(
+  loadingAreaWhite.animate(
     {
       translate: ['0 100vh', '0 0', '0 -100vh']
     },
@@ -52,7 +52,7 @@ window.addEventListener('load', () => {
     loadingAreaGrey.style.display = 'none';
   },2000 + 1200);
   setTimeout(() => {
-  loadingAreaGreen.style.display = 'none';
+  loadingAreaWhite.style.display = 'none';
 }, 2000 + 800);
 
 });
