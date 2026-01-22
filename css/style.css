@@ -374,7 +374,7 @@ hr{
   gap: 12px;
   padding: 12px 16px;
   position: relative;
-  z-index: 1000; /* メニューが他要素の裏に回らないように */
+  z-index: 200; /* メニューが他要素の裏に回らないように */
 }
 
 .menu-close{
@@ -427,7 +427,7 @@ hr{
     transform: translateY(-110%);
     transition: transform 0.3s ease;
 
-    background: rgba(250, 235, 215, 0.932);
+    background: rgba(250, 235, 215, 0.897);
     border-bottom: 1px solid rgba(0,0,0,0.12);
 
     padding: 16px;
@@ -460,10 +460,23 @@ hr{
     width: 40px;
     height: 40px;
     border-radius: 9999px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     background: transparent;
     cursor: pointer;
     font-size: 24px;
     line-height: 1;
   }
+}
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;           /* nav(2000)より下、本文より上 */
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* 表示中 */
+.menu-overlay.is-active{
+  opacity: 1;
 }
