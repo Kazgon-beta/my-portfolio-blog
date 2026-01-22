@@ -48,6 +48,13 @@ window.addEventListener('load', () => {
       fill: 'forwards',
     }
   );
+  setTimeout(()=>{
+    loadingAreaGrey.style.display = 'none';
+  },2000 + 1200);
+  setTimeout(() => {
+  loadingAreaGreen.style.display = 'none';
+}, 2000 + 800);
+
 });
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -55,9 +62,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const menuToggle =document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
   const menuClose = document.querySelector('.menu-close');
+  const overlay = document.querySelector('.menu-overlay');
 
   //どれか無いと動かせないのでガード（AIさんさすがです。）
-  if(!menuToggle||!nav||!menuClose)return;
+  if(!menuToggle||!nav||!menuClose||!overlay)return;
 
   //2)開く・閉じる関数
   function openMenu(){
@@ -66,13 +74,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     //開いている間は三本線を隠して誤タップを防ぐ
     menuToggle.classList.add('is-hidden');
+
+    //オーバーレイ表示
+    overlay.hidden = false;
+
+    //hidden解除直後だとtransitionが効きにくいので１フレーム遅らせる。
+    requestAnimationFrame(() =>{
+      overlay.classList.add('is-active');
+    });
+
+    //背景スクロールを止める
+    document.body.style.overflow = 'hidden';
   }
 
   function closeMenu(){
     nav.classList.remove('is-open');
     menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.classList.remove('is-hidden');
 
-    menuToggle.classList.remove('is-hidden')
+    //オーバーレイをフェードアウト
+    overlay.classList.remove('is-active');
+    //transition時間（0.25秒）に合わせる
+    setTimeout(() =>{
+      overlay.hidden=true;
+    },250);
+
+    //スクロール解除
+    document.body.style.overflow ='';
   }
 
   //3)クリックイベント
@@ -95,6 +123,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.addEventListener('keydown',(e)=>{
     if(e.key === 'Escape')closeMenu();
   });
+
+  //6)背景タップで閉じる
+  overlay.addEventListener('click',closeMenu);
 });
 
 
