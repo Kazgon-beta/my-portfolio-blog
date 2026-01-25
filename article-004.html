@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+    <meta charset="UTF-8">
+    <title>【おすすめプロンプトあり】チャットGPTと学ぶアルゴリズム問題</title>
+    <meta name="description" content="未経験30代がエンジニア転職を目指して日々勉強した内容をまとめるブログ">
+    <!--ビューポート設定-->
+    <meta name ="viewport" content="width=device-width,initial-scale=1.0">
+    <!---リセットCSS-->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css=1">
+    <!---googleフォント-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+
+ <body>
+     <a href="index.html"><img class="logo" src="images/logo.jpg" alt="ブログホーム"></a>
+     <header class="page-header bebas-neue-regular">
+       
+        <!--スマホ用のハンバーガーボタン-->
+        <button class="menu-toggle"
+                aria-controls="site-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く">
+         <!---3本線（CSSで見た目を作る）-->
+         <span class="bar" aria-hidden="true"></span>
+         <span class="bar" aria-hidden="true"></span> 
+         <span class="bar" aria-hidden="true"></span>     
+        </button>  
+        <nav id="site-menu" class="main-nav font-english" aria-label="メインメニュー">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+            <button class="menu-close" type="button" aria-label="メニューを閉じる">
+                X
+            </button>
+        </nav>    
+     </header>
+
+    <main class="article-container">
+        <!-- 記事タイトル -->
+    <h1 class="article-title">【おすすめプロンプトあり】チャットGPTと学ぶアルゴリズム問題</h1>
+
+    <!-- 投稿日 -->
+    <p class="article-date">2026-01-26</p>
+
+    <!-- アイキャッチ画像 -->
+    <img src="images/article04/article-004.jpg" alt="記事のアイキャッチ画像" class="article-eyecatch">
+
+    <!-- リード文 -->
+    <div class="article-lead">
+        <p>
+            私みたいな30代未経験エンジニア志望おじさんは、エンジニアになれたとしても会社の経営が悪くなったら真っ先に切られAIに淘汰される存在です。<br>
+            そんな残念おじさんにならないためには、「自ら考え課題を解決する力」を身につけなければいけません。<br>
+            そんなわけで、今回は私が普段どのようにAIを使い、学習をしているのかと言うのを紹介します。<br>
+        </p>
+      <!-- <p> 「転職に向けて何か成果物を作りたいけど、何から手を付けたら良いのか分からない。」</p>
+       <p>未経験転職を希望する方によくある悩みではないでしょうか。</p>
+       <p>この記事では、html/cssを使った自作ブログをポートフォリオとして制作することのメリットと、筆者がどのように制作したのかの概要を紹介します。</p>
+       <p>初心者でも試行錯誤して作ることができたので、何を作るか悩んでいる方はぜひ挑戦してみて下さい。</p><br>-->
+
+    </div>
+    <!--目次-->
+    <div class="tabele-of-contents">
+       <div>目次</div>
+       <ol>
+         <li><a href="#1">ＡＩ利用学習でやって良いこと/悪いこと</a></li>
+             <ol>
+                <li><a href="#1-1">答えは聞かない</a></li>
+                <li><a href="#1-2">知らないことを聞く</a></li>
+                <li><a href="#1-3">最後に問題をつくってもらう</a></li>
+             </ol>
+         <li><a href="#2">実際に使ってみた記録</a></li>
+         <li><a href="#3">おわりに</a></li>
+       </ol>
+
+
+    </div>
+
+    <!-- 本文セクション -->
+    <h2 id="1">1.AI利用学習でやって良いこと/悪いこと</h2>
+    <p>
+       AIが出てきた時、すごく感動したのを覚えています。
+       「これを使えば、自分が作りたいと思っているゲームが作れるのでは？」と期待に胸を膨らませ、
+       プロンプトを作成し、コードを書いてもらい、何とかできあがりました。
+       ところが、思った通りの挙動にならなかった時に、自分ではどうしたら良いのか全く分かりませんでした。
+     
+       これではAIが書いたコードをコピペするだけの人間、つまり、今自分はAIに使われているのではないかとすら思いました。
+
+       そこからは、AIに「使われる」のではなく、AIを「使っている」と言えるかを常に意識して、適切にAIを学習に活かしてきたつもりです。
+       以下、主導権を自分のものにするポイントを紹介します。
+
+       <ol class="description">
+        <li id="1-1">答えは聞かない。</li>
+            <p>先ほども言いましたが答えを聞き、貼り付けているだけでは自分の力になりません。</p>
+            <p>行き詰った時におすすめのプロンプトがあります。</p>
+            <div class="box">
+                <p>
+                <div class="strong">「答えは言わず、考え方だけ教えてください。」<br>「自力で解くためのヒントを教えてください。」</div>
+            </div>
+            
+                こうすることで、最終的に考えるのは自分になります。
+            </p>
+        <li id="1-2">知らないことを聞く</li>
+            <p>答えを聞くことは良くないですが、プログラミングは知らないと解けない問題があるのは事実です。その場合は、webで調べるより、AIに聞いた方が早いことが多いです。</p>
+            <p>その際の注意点です。</p>
+            <p>例えば、
+                <div class="box">
+                    <div class="strong">「配列に要素を追加したいのですが、基本的な方法を教えてください。」<br>
+                    「文字列型の1を数字型の1に変換したいのですが、どうしたらよいのですか。」</div></p>
+                </div>
+                
+            <p>などは、きちんとやりたいことが明確で、やり方だけが分からない状態です。しかし、</p>
+            <p><strong>「方向キーを入力したらキャラクターが歩くスクリプトを作ってください。」</strong></p>
+            <p>これはよくありません。やりたいことは明確ですが、使う技術に対して検討がついていません。こういう時はＡＩに使われる側になってしまいます。</p>
+            <p>あくまで「主導権は自分が握っている」状態が理想ですから、自分が把握できないことが大量に出てきそうなプロンプトはなるべく避けましょう。</p>
+            <p>それから、AIを利用して概要を理解出来たら、<div class="strong">一度webを使って調べるとさらに分かることが多いです。</div></p>
+            <p>初心者向けにまとめて下さっている方々に感謝。
+
+            </p>
+        <li id="1-3">最後に問題を作ってもらう。</li>
+            <p>
+                とは言え自分は初心者ですから、知らないことが大量に出てきて当然です。ほぼ全て教えて貰わないと分からない時もあるでしょう。<br>
+                その場合、きちんと理解できているか確かめ、次同じような場面に出くわした時にすぐに思い出せるかが肝心になります。<br>
+                そこでおすすめのプロンプトです。<br>
+                <div class="strong box">（○○について）本当に理解できているか、3択問題を作成してください。</div>
+                最後に問題を解くことで、理解が深まります。
+            </p>
+    </p>
+
+    <h2 id="2">2.実際に使って見た記録</h2>
+    <p>私は普段、プログラミング言語の考え方の理解を深めるため、<a href="https://paiza.jp/mypage">Paiza</a>というサイトの中にある「問題集」を解いています。</p>
+    <p>チケットを使えば環境構築無しで問題を解けるのですが、課金しなくてはいけないのでケチってVisualStudioCodeを利用して問題を解いています。</p>
+    <p>正式なサービスを利用していないので、自分が書いたコードが正しいのかはtxtファイルを利用したテスト+AIへの確認で済ませています。</p>
+    <p>今回はそんなある時の学習内容を記録してみたので、少し恥ずかしいですが公開しようと思います。</p>
+    <p>今回はこの問題を解きました。<a href="https://paiza.jp/works/mondai/string_primer/advance_step7?language_uid=c-sharp">表記の訂正 C#編</a></p>
+    <p>利用したAIはChatGPTです。</p>
+
+    <img src="images/article04/LeaningWithAI01.png" alt="最初のプロンプト">
+    <P>はじめ問題を見た時、「？？？」となったので、基本的な知識と解く上での考え方のみ教えてもらいました。</P>
+    <p>答えを言わないように回答しているのが分かるでしょうか。
+        必要な知識を聞いたので、まったくわからない場合はその時点で「○○について基礎的な使い方を教えてください。」と質問しても良いかもしれません。</p>
+    <p>私の場合、ざっくり知っている知識のような気がしたので、ひとまず自分で考えてみますが、、、</p>
+    <img src="images/article04/LeaningWithAI02.png" alt="2枚目困ったな">
+    <p>苦戦しました。途中まで書いたコードを貼り付け、部分的に分からないところのヒントをもらうことにしました。</p>
+    <img src="images/article04/LeaningWithAI03.png" alt="3枚目答えは教えない">
+    <p>特に指定してはいませんが、「答えを教えない」という条件はしっかり覚えています。</p>
+    <p>課題を分解することで、自分の知っている知識でも解けそうだということが分かりました。これが自分で発想できるようになりたいものです。</p>
+    <p>その後、細かいことを少し聞いて、出来上がった物を確認してもらいます。</p>
+    <img src="images/article04/LeaningWithAI05.png" alt="5枚目一度答え合わせ">
+    <p>すると、問題があることを指摘されました。明らかな凡ミスもあってかなり恥ずかしいです。ちゃんと出す前に確認することの大切さを感じます。</p>
+    <img src="images/article04/LeaningWithAI06.png" alt="6枚目フィードバック">
+    <p>フィードバックをもらい、訂正したものを出したら、細かいところはさておき、与えられた入力に対して正しく出力できているという判定になりました。</p>
+    <img src="images/article04/LeaningWithAI07.png"alt="7枚目あなたならどうする？">
+    <p>ここまで考えたことであればおそらく回答を聞いても知らないことだらけというのは避けられます。自分の知見を広げるためにも、ここで一度模範解答を聞いてみます。</p>
+    <img src="images/article04/LeaningWithAI08.png" alt="8枚目模範回答？">
+    <p>しっかり読んで、自分のコードの無駄な部分や、改良方法を学びますが、、、、ん？となります。</p>
+    <img src="images/article04/LeaningWithAI09.png" alt="9枚目間違ってない？">
+    <p>問題の条件として出される可能性のある数値で、AIの模範解答では正しく判定されないことに気づきました。</p>
+    <p>AIはすごいですが、やはり盲目的に信じるのは危険です。改めて人の目で見ることの大切さを実感しました。</p>
+    <img src="images/article04/LeaningWithAI10.png" alt="10枚目三択問題">
+    <p>最後に、自分のコードの悪かった点や、新しく知った知識、以前から知っているたけど繋がらなかった知識を問題にしてもらいました。</p>
+    <p>文章を読みながら今回のことをふりかえり、知識が少増えましたが、</p>
+    <img src="images/article04/LeaningWithAI11.png" alt="11枚目問題の答え手抜き">
+    <p>ちょっと手を抜かれている気が、、、(笑)普段はそんなことないんですけどね。</p>
+
+    <h2 id="3">3.おわりに</h2>
+    <p>AIを使ってプログラミングの学習を進めることができれば、効率よくスピーディーに色々なことを学べます。</p>
+    <p>しかし、頼りすぎては自分の力が身に付きませんし、AIだって間違えることがあることは上記で実証済みです。</p>
+    <p>きちんと正しい知識を身につけ自立するために、AIはあくまで、「補助輪」だと思い、自分で考える力を身につけていきたいものです。</p>
+
+    
+
+
+    <!-- 戻るボタン -->
+    <div class="back-btn-wrap">
+        <a href="articles.html" class="back-btn">← 記事一覧に戻る</a>
+    </div>
+
+    </main>
+    
+    <footer>
+        <p>@ 2025 Kazgon.Log</p>
+    </footer>
+
+<div class="menu-overlay" hidden></div>
+ </body>
+
+</html>    
